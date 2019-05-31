@@ -1,0 +1,43 @@
+
+filetype off
+
+"for syntax highlighting
+if has ("syntax")
+	syntax on
+endif
+
+" used for autoindent
+if has ("autocmd")
+	filetype plugin indent on
+endif
+
+" Used for copy paste formatting
+nnoremap <F2> :set invpaste paste?<CR>
+imap <F2> <C-O>:set invpaste paste?<CR>
+set pastetoggle=<F2>
+
+
+"for auto completion
+set completeopt=longest,menuone
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
+  \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+
+inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
+  \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+
+
+set showcmd 
+set showmode
+set showmatch
+set smartcase
+set incsearch
+set hlsearch " values matching search are highlighted
+set wrap
+set number " line numbers are shown
+
+set ttyfast " fast scrolling
+set scrolloff=5 " minimum number of lines offset from cursor
+
+set tags=./tags; " recursive ctag finder
