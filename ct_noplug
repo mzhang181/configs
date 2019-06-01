@@ -83,5 +83,13 @@ set scrolloff=5 " minimum number of lines offset from cursor
 
 set tags=./tags; " ctag finder
 
-nnoremap <silent>]<C-]> <C-w><C-]><C-w>T  " remaps tag jump to open in a new tab
-nnoremap <silent>t<C-t> :q!<cr>  " used to jump out of tags. Also closes tabs now because of tag jump remapping. Does not save the file if you modify it
+nnoremap <silent>]<C-]> <C-w><C-]><C-w>T  " jumps to tag in a seperate tab
+nnoremap <silent>t<C-t> :q!<cr>  " closing a tab that you jumped to using the previous key binding
+nnoremap <Tab>E :tabe<Space> " Use Tab E to open a new tab. Must type file name after hitting TAB E
+nnoremap <silent><Tab>Q :tabo<cr>:q!<cr> " use TAB Q to close all tabs and quit without saving
+
+nnoremap <C-Left> :tabprevious<CR> " change to previous tab
+nnoremap <C-Right> :tabnext<CR> "change to next tab
+nnoremap <silent> <A-Left> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR> " move tab to the left
+nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . (tabpagenr()+1)<CR> " move tab to the right
+
