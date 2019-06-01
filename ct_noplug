@@ -82,3 +82,6 @@ set ttyfast " fast scrolling
 set scrolloff=5 " minimum number of lines offset from cursor
 
 set tags=./tags; " ctag finder
+
+nnoremap <silent>]<C-]> <C-w><C-]><C-w>T  " remaps tag jump to open in a new tab
+nnoremap <silent>t<C-t> :q!<cr>  " used to jump out of tags. Also closes tabs now because of tag jump remapping. Does not save the file if you modify it
