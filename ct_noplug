@@ -22,6 +22,9 @@ set ttyfast " fast scrolling
 set scrolloff=5 " minimum number of lines offset from cursor
 set tags=./tags; " ctag finder
 set autoread
+set softtabstop=4
+set tabstop=4
+set shiftwidth=4
 
 
 " ================================= Colours ===================================
