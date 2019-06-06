@@ -64,20 +64,12 @@ set incsearch
 set hlsearch " values matching search are highlighted
 set wrap
 set number " line numbers are shown
+set expandtab " replace tabs with spaces
+set smarttab
 set autoindent " for autoindentation
-
-" For indentation on python files
-if has("autocmd")
-	au BufNewFile,BufRead *.py
-	    \ setlocal tabstop=4
-	    \ setlocal softtabstop=4
-	    \ setlocal shiftwidth=4
-	    \ setlocal textwidth=80
-	    \ setlocal smarttab
-	    \ setlocal expandtab
-endif
-
-
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
 set ttyfast " fast scrolling
 set scrolloff=5 " minimum number of lines offset from cursor
 
