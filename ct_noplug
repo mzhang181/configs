@@ -1,10 +1,60 @@
-
 " This line should not be removed as it ensures that various options are
 " properly set to work with the Vim-related packages available in Debian.
 runtime! debian.vim
 
 
 filetype off
+
+
+set showcmd 
+set showmode
+set showmatch
+set ignorecase
+set smartcase
+set incsearch
+set expandtab
+set smarttab
+set hlsearch " values matching search are highlighted
+set wrap
+set number " line numbers are shown
+set autoindent " for autoindentation
+set ttyfast " fast scrolling
+set scrolloff=5 " minimum number of lines offset from cursor
+set tags=./tags; " ctag finder
+set autoread
+
+
+" ================================= Colours ===================================
+" Enable syntax highlighting
+syntax enable 
+
+" Enable 256 colors palette in Gnome Terminal
+if $COLORTERM == 'gnome-terminal'
+    set t_Co=256
+endif
+
+try
+    colorscheme desert
+catch
+endtry
+
+set background=dark
+
+" Set extra options when running in GUI mode
+if has("gui_running")
+    set guioptions-=T
+    set guioptions-=e
+    set t_Co=256
+    set guitablabel=%M\ %t
+endif
+
+
+" ==================================== MISC ===================================
+" For indentation on python files
+if has("autocmd")
+	autocmd FileType python set tabstop=4|set shiftwidth=4|set expandtab
+	au BufEnter *.py set ai sw=4 ts=4 sta et fo=croql
+endif
 
 
 "for syntax highlighting
@@ -17,11 +67,6 @@ endif
 if has ("autocmd")
 	filetype plugin indent on
 endif
-
-
-set autoread
-
-set background=dark
 
 
 " Used for copy paste formatting
@@ -55,31 +100,10 @@ inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
   \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 
 
-set showcmd 
-set showmode
-set showmatch
-set ignorecase
-set smartcase
-set incsearch
-set hlsearch " values matching search are highlighted
-set wrap
-set number " line numbers are shown
-set expandtab " replace tabs with spaces
-set smarttab
-set autoindent " for autoindentation
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set ttyfast " fast scrolling
-set scrolloff=5 " minimum number of lines offset from cursor
-
-set tags=./tags; " ctag finder
-
-" keybindings
+" ============================== Keybindings ==================================
 nnoremap <silent>]<C-]> <C-w><C-]><C-w>T
 nnoremap <silent>t<C-t> :q!<CR>
 nnoremap <Tab>E :tabe<Space>
 nnoremap <silent><Tab>Q :tabo<CR>:q!<cr>
 nnoremap <silent> <A-Left> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
 nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . (tabpagenr()+1)<CR>
-
