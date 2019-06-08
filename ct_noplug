@@ -110,3 +110,4 @@ nnoremap <Tab>E :tabe<Space>
 nnoremap <silent><Tab>Q :tabo<CR>:q!<cr>
 nnoremap <silent> <A-Left> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
 nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . (tabpagenr()+1)<CR>
+nnoremap <leader>N :set nu!<CR>
