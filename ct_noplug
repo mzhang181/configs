@@ -106,6 +106,7 @@ inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
 " ============================== Keybindings ==================================
 nnoremap <silent>]<C-]> <C-w><C-]><C-w>T
 nnoremap <silent>t<C-t> :q!<CR>
+nnoremap <silent>g<C-]> <C-w>g<C-]><C-w>T
 nnoremap <Tab>E :tabe<Space>
 nnoremap <silent><Tab>Q :tabo<CR>:q!<cr>
 nnoremap <silent> <A-Left> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
