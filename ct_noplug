@@ -32,7 +32,7 @@ if !has('nvim')
     set ttyfast " fast scrolling    
 endif    
     
-if has('nvim') || v:version > 800    
+if has('nvim') || v:version >= 800    
     set termguicolors    
 endif    
     
