@@ -67,8 +67,7 @@ if has("autocmd")
     au BufNewFile,BufRead *.py
         \ set tabstop=4        
         \ set softtabstop=4        
-        \ set shiftwidth=4        
-    au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/        
+        \ set shiftwidth=4              
 endif    
     
     
@@ -124,3 +123,5 @@ nnoremap <silent><Tab>Q :tabo<CR>:q!<cr>
 nnoremap <silent> <A-Left> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
 nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . (tabpagenr()+1)<CR>
 nnoremap <leader>N :setlocal number!<cr>
+"Remove all trailing whitespace by pressing F5
+nnoremap <leader>W :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
