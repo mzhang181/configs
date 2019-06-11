@@ -6,89 +6,98 @@ runtime! debian.vim
 filetype off
 
 
-set showcmd 
 set showmode
 set showmatch
 set ignorecase
 set smartcase
-set incsearch
 set expandtab
-set smarttab
-set hlsearch " values matching search are highlighted
 set wrap
 set number " line numbers are shown
-set autoindent " for autoindentation
-set ttyfast " fast scrolling
 set scrolloff=5 " minimum number of lines offset from cursor
 set tags=./tags; " ctag finder
 set autoread
-set softtabstop=4
-set tabstop=4
-set shiftwidth=4
+set foldmethod=syntax
+set foldlevel=99
 
-
-" ================================= Colours ===================================
-" Enable syntax highlighting
-syntax enable 
-
-" Enable 256 colors palette in Gnome Terminal
-if $COLORTERM == 'gnome-terminal'
-    set t_Co=256
-endif
-
-try
-    colorscheme gruvbox
-catch
-endtry
-
-set background=dark
-
-" Set extra options when running in GUI mode
-if has("gui_running")
-    set guioptions-=T
-    set guioptions-=e
-    set t_Co=256
-    set guitablabel=%M\ %t
-endif
-
-
-" ==================================== MISC ===================================
-" For indentation on python files
+if !has('nvim')
+    set autoread
+    set incsearch
+    set smarttab
+    set hlsearch " values matching search are highlighted
+    set showcmd 
+    set autoindent " for autoindentation
+    set ttyfast " fast scrolling    
+endif    
+    
+if has('nvim') || v:version > 800    
+    set termguicolors    
+endif    
+    
+" ================================= Colours ===================================    
+" Enable syntax highlighting    
+syntax enable    
+    
+" Enable 256 colors palette in Gnome Terminal    
+if $COLORTERM == 'gnome-terminal'    
+    set t_Co=256    
+endif    
+    
+try    
+    colorscheme gruvbox    
+catch    
+endtry    
+    
+set background=dark    
+    
+" Set extra options when running in GUI mode    
+if has("gui_running")    
+    set guioptions-=T    
+    set guioptions-=e    
+    set t_Co=256    
+    set guitablabel=%M\ %t    
+endif    
+    
+    
+" ==================================== MISC ===================================    
+" For indentation on python files    
 if has("autocmd")
-	autocmd FileType python set tabstop=4|set shiftwidth=4|set expandtab
-	au BufEnter *.py set ai sw=4 ts=4 sta et fo=croql
-endif
-
-
-"for syntax highlighting
-if has ("syntax")
-	syntax on
-endif
-
-
-" for filetype indentation
-if has ("autocmd")
-	filetype plugin indent on
-endif
-
-
-" Used for copy paste formatting
-nnoremap <F2> :set invpaste paste?<CR>
-imap <F2> <C-O>:set invpaste paste?<CR>
-set pastetoggle=<F2>
-
-
-" To be able to undo changes after saving
-try
-	set undodir=~/.vim_runtime/temp_dirs/undodir
-	set undofile
-catch
+    au BufNewFile,BufRead *.py
+        \ set tabstop=4        
+        \ set softtabstop=4        
+        \ set shiftwidth=4        
+    au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/        
+endif    
+    
+    
+"for syntax highlighting    
+if has ("syntax")    
+        syntax on    
+endif    
+    
+    
+" for filetype indentation    
+if has ("autocmd")    
+        filetype plugin indent on    
+endif    
+    
+    
+" Used for copy paste formatting    
+nnoremap <F2> :set invpaste paste?<CR>    
+imap <F2> <C-O>:set invpaste paste?<CR>    
+set pastetoggle=<F2>    
+    
+    
+" To be able to undo changes after saving    
+try    
+    set undodir=~/.vim_runtime/temp_dirs/undodir        
+    set undofile        
+catch    
 endtry
 
 
 " For Vim to jump to last position when reopening a file
 if has("autocmd")
-	au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
 
@@ -111,4 +120,4 @@ nnoremap <Tab>E :tabe<Space>
 nnoremap <silent><Tab>Q :tabo<CR>:q!<cr>
 nnoremap <silent> <A-Left> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
 nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . (tabpagenr()+1)<CR>
-nnoremap <leader>N :set nu!<CR>
+nnoremap <leader>N :setlocal number!<cr>
