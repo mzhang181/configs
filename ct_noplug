@@ -18,6 +18,9 @@ set tags=./tags; " ctag finder
 set autoread
 set foldmethod=syntax
 set foldlevel=99
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
 
 if !has('nvim')
     set autoread
