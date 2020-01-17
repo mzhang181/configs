@@ -33,11 +33,16 @@ set foldlevel=99
 
 set autoread
 
-set tags=./tages; "ctags finder
+set tags=./tags; "ctags finder
 
 " number settings
 set number
 set relativenumber
+
+" Turn backup off, since most stuff is in SVN, git etc. anyway...
+set nobackup
+set nowb
+set noswapfile
 
 " ================================ Custom features =============================
 
@@ -70,10 +75,15 @@ call plug#begin('~/.vim/plugged')
 Plug 'morhetz/gruvbox'
 
 Plug 'scrooloose/nerdtree'
+" nerdtree settings
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+autocmd vimenter * NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 Plug 'vim-airline/vim-airline'
+" airline settings
+let g:airline#extensions#tabline#enabled = 1
 
 Plug 'tpope/vim-fugitive'
 
@@ -82,8 +92,16 @@ if has('nvim') || v:version >= 800
 endif
 
 Plug 'ctrlpvim/ctrlp.vim'
+" ctrlp settings
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_switch_buffer = 'et'
 
 Plug 'majutsushi/tagbar'
+" tagbar settings
+nmap <F8> :TagbarToggle<CR>
+autocmd vimenter * TagbarToggle
 
 Plug 'scrooloose/syntastic'
 " syntastic settings
@@ -127,21 +145,14 @@ inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
 inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
   \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 
-" open tags in another tab
-nnoremap <silent>]<C-]> <C-w><C-]><C-w>T
-" close tab
-noremap <silent>t<C-t> :q!<CR>
-" open new tab with TAB+E
-nnoremap <Tab>E :tabe<Space>
-" Close all tabs and exit
-nnoremap <silent><Tab>Q :tabo<CR>:q!<cr>
-" reorder tabs with alt and arrow keys
-nnoremap <silent> <A-Left> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
-nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . (tabpagenr()+1)<CR>
-" Change tabs with ctrl and arow keys
-nnoremap <C-Left> :tabprevious<CR>
-nnoremap <C-Right> :tabnext<CR>
-" toggle line numbers
+" close current buffer with b+C
+noremap <silent>bC :bd!<CR>
+" open new buffer with b+E
+nnoremap bE :e<Space>
+" Change buffers with ctrl and arrow keys
+nnoremap <C-Left> :bprevious<CR>
+nnoremap <C-Right> :bnext<CR>
+" toggle line numbers with \+N
 nnoremap <leader>N :setlocal number! relativenumber!<cr>
-"Remove all trailing whitespace by pressing F5
+"Remove all trailing whitespace by pressing \+W
 nnoremap <leader>W :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
