@@ -1,13 +1,10 @@
 # vimconfig
 My personal vimrc files
 
-Currently there is only one vim config file which is designed to not need plugins. 
-It is designed to work with exuberant-ctags.
+There is a file designed to work with the standard set of plugins installed with vim
+It is designed to work with exuberant-ctags or universal.
 
-You can install exuberant-ctags on debian with
-sudo apt install exuberant-ctags
+There is also a version with vim-plugs. This may be updated for vim8 in the future
 
-Also rename the config file should be name .vimrc. The path of the file should be $HOME/.vimrc
+Use the vimconfig file by rename it to ".vimrc" and placing it in $HOME.
 
-To get the color scheme to work:
-Go to /usr/share/vim/vimXX/colors and copy gruvbox.vim into that directory.
