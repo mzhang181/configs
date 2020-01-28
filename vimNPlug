@@ -44,6 +44,8 @@ set nobackup
 set nowb
 set noswapfile
 
+set paste
+
 " ================================ Custom features =============================
 
 "For syntax highlighting
