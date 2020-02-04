@@ -44,7 +44,11 @@ set nobackup
 set nowb
 set noswapfile
 
+" Copy paste formatting
 set paste
+
+" Backspace fix
+set backspace=indent,eol,start
 
 " ================================ Custom features =============================
 
