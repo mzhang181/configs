@@ -19,7 +19,7 @@ set expandtab " changes tabs to space
 set shiftwidth=4 " number of spaces used for indentation
 set tabstop=4 " number of spaces insert when tab is hit
 set smarttab 
-set smartindent
+set autoindent
 
 " status line settings
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ [BUFFER=%n]\ %{strftime('%c')}
@@ -43,9 +43,6 @@ set relativenumber
 set nobackup
 set nowb
 set noswapfile
-
-" Copy paste formatting
-set paste
 
 " Backspace fix
 set backspace=indent,eol,start
@@ -90,9 +87,9 @@ endtry
 " =========================== Custom keybindings ==============================
 
 " Used for copy paste formatting    
-nnoremap <F2> :set invpaste paste?<CR>    
-imap <F2> <C-O>:set invpaste paste?<CR>    
+nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
+set showmode
 
 "for auto completion
 set completeopt=longest,menuone
