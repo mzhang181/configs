@@ -19,7 +19,7 @@ set expandtab " changes tabs to space
 set shiftwidth=4 " number of spaces used for indentation
 set tabstop=4 " number of spaces insert when tab is hit
 set smarttab 
-set autoindent
+set smartindent
 
 " status line settings
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ [BUFFER=%n]\ %{strftime('%c')}
@@ -143,6 +143,7 @@ set pastetoggle=<F2>
 
 "for auto completion
 set completeopt=longest,menuone
+set omnifunc=syntaxcomplete#Complete
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
