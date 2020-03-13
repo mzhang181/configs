@@ -33,7 +33,9 @@ set foldlevel=99
 
 set autoread
 
-set tags=./tags; "ctags finder
+set tags=./tags;/ "ctags finder
+set tags^=.git/tags;~
+set tagrelative
 
 " number settings
 set number
@@ -43,6 +45,9 @@ set relativenumber
 set nobackup
 set nowb
 set noswapfile
+
+" Copy paste formatting
+set paste
 
 " Backspace fixes
 set backspace=indent,eol,start
@@ -90,16 +95,13 @@ let g:airline#extensions#tabline#enabled = 1
 
 Plug 'tpope/vim-fugitive'
 
-if has('nvim') || v:version >= 800
-    Plug 'fatih/vim-go'
-endif
-
 Plug 'ctrlpvim/ctrlp.vim'
-" ctrlp settings
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_switch_buffer = 'et'
+nnoremap <leader>T :CtrlPTag<cr>
 
 Plug 'majutsushi/tagbar'
 " tagbar settings
@@ -117,6 +119,16 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+Plug 'christoomey/vim-tmux-navigator'
+" vim-tmux-navigator settings
+nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
+nnoremap <silent> <C-\> :TmuxNavigatePrevious<cr>
+
+Plug 'universal-ctags/ctags'
+
 call plug#end()
 
 " =============================== Colour schemes ===============================
@@ -133,29 +145,31 @@ endtry
 
 " =========================== Custom keybindings ==============================
 
-" Used for copy paste formatting    
-nnoremap <F2> :set invpaste paste?<CR>
+" Copy paste format toggling
+nnoremap <F2> :set invpaste paste?<CR>    
 set pastetoggle=<F2>
-set showmode
 
 "for auto completion
-set completeopt=longest,menuone
+filetype plugin on
 set omnifunc=syntaxcomplete#Complete
+set completeopt=longest,menuone
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
-inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
-  \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
-
-inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
-  \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+" open omni completion menu closing previous if open and opening new menu without changing the text
+inoremap <expr> <C-Space> (pumvisible() ? (col('.') > 1 ? '<Esc>i<Right>' : '<Esc>i') : '') .
+            \ '<C-x><C-o><C-r>=pumvisible() ? "\<lt>C-n>\<lt>C-p>\<lt>Down>" : ""<CR>'
+" open user completion menu closing previous if open and opening new menu without changing the text
+inoremap <expr> <S-Space> (pumvisible() ? (col('.') > 1 ? '<Esc>i<Right>' : '<Esc>i') : '') .
+            \ '<C-x><C-u><C-r>=pumvisible() ? "\<lt>C-n>\<lt>C-p>\<lt>Down>" : ""<CR>'
 
 " close current buffer with b+C
 noremap <silent>bC :bd!<CR>
 " open new buffer with b+E
 nnoremap bE :e<Space>
 " Change buffers with ctrl and arrow keys
-nnoremap <C-Left> :bprevious<CR>
-nnoremap <C-Right> :bnext<CR>
+" nnoremap <C-Left> :bprevious<CR>
+" nnoremap <C-Right> :bnext<CR>
+nnoremap bP :bprevious<CR>
+nnoremap bN :bnext<CR>
 " toggle line numbers with \+N
 nnoremap <leader>N :setlocal number! relativenumber!<cr>
 "Remove all trailing whitespace by pressing \+W
