@@ -92,6 +92,8 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 Plug 'vim-airline/vim-airline'
 " airline settings
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
+
 
 Plug 'tpope/vim-fugitive'
 
@@ -170,7 +172,8 @@ nnoremap bE :e<Space>
 " nnoremap <C-Right> :bnext<CR>
 nnoremap bP :bprevious<CR>
 nnoremap bN :bnext<CR>
+nnoremap <leader>b :buffer<space>
 " toggle line numbers with \+N
-nnoremap <leader>N :setlocal number! relativenumber!<cr>
+nnoremap <leader>n :setlocal number! relativenumber!<cr>
 "Remove all trailing whitespace by pressing \+W
-nnoremap <leader>W :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
+nnoremap <leader>w :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
