@@ -5,10 +5,10 @@ unbind C-b
 set-option -g prefix C-a
 bind-key C-a send-prefix
 
+set -g default-terminal "screen-256color"
+
 # Enable mouse control (clickable windows, panes, resizable panes)
 set -g mouse on
-
-set -g default-terminal "screen-256color"
 
 # Smart pane switching with awareness of Vim splits.
 # See: https://github.com/christoomey/vim-tmux-navigator
@@ -30,8 +30,15 @@ bind-key -T copy-mode-vi 'C-k' select-pane -U
 bind-key -T copy-mode-vi 'C-l' select-pane -R
 bind-key -T copy-mode-vi 'C-\' select-pane -l
 
+# Better window split bindings
 bind-key \ split-window -h
 bind-key - split-window -v
+
+# Copy paste binding for the tmux buffer
+set-window-option -g mode-keys vi
+bind-key -T copy-mode-vi v send-keys -X begin-selection
+bind-key -T copy-mode-vi y send-keys -X copy-selection
+bind-key -T copy-mode-vi r send-keys -X rectangle-toggle
 
 ######################
 ### DESIGN CHANGES ###
