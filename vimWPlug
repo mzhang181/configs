@@ -13,6 +13,8 @@ set hlsearch " Highlight matching patterns
 " mouse settings
 set scrolloff=5
 set ttyfast "set scrolling in vim
+set ttymouse=xterm2
+set mouse=a
 
 " indentation and tab settings
 set expandtab " changes tabs to space
@@ -111,7 +113,7 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_switch_buffer = 'et'
-nnoremap <leader>T :CtrlPTag<cr>
+nnoremap <leader>t :CtrlPTag<cr>
 
 Plug 'majutsushi/tagbar'
 " tagbar settings
@@ -172,7 +174,7 @@ inoremap <expr> <S-Space> (pumvisible() ? (col('.') > 1 ? '<Esc>i<Right>' : '<Es
             \ '<C-x><C-u><C-r>=pumvisible() ? "\<lt>C-n>\<lt>C-p>\<lt>Down>" : ""<CR>'
 
 " close current buffer with b+C
-noremap <silent>bC :bd!<CR>
+noremap <silent>bC :bp<cr>:bd #<cr>
 " open new buffer with b+E
 nnoremap bE :e<Space>
 " Change buffers with ctrl and arrow keys
