@@ -1,7 +1,7 @@
 // Place your key bindings in this file to override the defaultsauto[]
 [
     {
-        "key": "ctrl+b shift+n",
+        "key": "ctrl+b n",
         "command": "workbench.action.nextEditor"
     },
     {
@@ -9,7 +9,7 @@
         "command": "-workbench.action.nextEditor"
     },
     {
-        "key": "ctrl+b shift+p",
+        "key": "ctrl+b p",
         "command": "workbench.action.previousEditor"
     },
     {
