@@ -1,48 +1,17 @@
 {
-    "vim.smartRelativeLine": true,
-    "vim.autoindent": true,
-    "vim.foldfix": true,
-    "vim.hlsearch": true,
-    "vim.incsearch": true,
-    "vim.ignorecase": true,
-    "vim.smartcase": true,
-    "vim.showmodename": true,
-    "vim.showcmd": true,
-    "vim.surround": true,
-    "vim.highlightedyank.enable": true,
-    "vim.statusBarColorControl": true,
-    "vim.statusBarColors.normal": ["#8FBCBB", "#434C5E"],
-    "vim.statusBarColors.insert": "#BF616A",
-    "vim.statusBarColors.visual": "#B48EAD",
-    "vim.statusBarColors.visualline": "#B48EAD",
-    "vim.statusBarColors.visualblock": "#A3BE8C",
-    "vim.statusBarColors.replace": "#D08770",
-    "vim.statusBarColors.commandlineinprogress": "#007ACC",
-    "vim.statusBarColors.searchinprogressmode": "#007ACC",
-    "vim.statusBarColors.easymotionmode": "#007ACC",
-    "vim.statusBarColors.easymotioninputmode": "#007ACC",
-    "vim.statusBarColors.surroundinputmode": "#007ACC",
-    "vim.commandLineModeKeyBindingsNonRecursive": [
-    
-    ],
-    "workbench.colorCustomizations": {
-        "statusBar.background": "#8FBCBB",
-        "statusBar.noFolderBackground": "#8FBCBB",
-        "statusBar.debuggingBackground": "#8FBCBB",
-        "statusBar.foreground": "#434C5E"
-    },
-    "remote.SSH.remotePlatform": {
-        "ykfl00534304a.amer.global.corp.sap": "linux"
-    },
-    "editor.suggestSelection": "first",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "python.languageServer": "Microsoft",
-    "editor.multiCursorModifier": "alt",
-    "java.autobuild.enabled": false,
+    "editor.fontFamily": "Ubuntu Mono derivative Powerline",
     "vim.changeWordIncludesWhitespace": true,
-    "vim.commandLineModeKeyBindings": [
-    ],
+    "vim.foldfix": true,
+    "vim.highlightedyank.enable": true,
+    "vim.hlsearch": true,
+    "vim.showMarksInGutter": true,
     "vim.sneak": true,
-    "vim.sneakUseIgnorecaseAndSmartcase": true,
-    "files.trimTrailingWhitespace": true
+    "vim.smartRelativeLine": true,
+    "go.testTimeout": "5m",
+    "go.alternateTools": {
+    },
+    "go.lintFlags": [
+        "[\"--fast\"]"
+    ],
+    "go.lintTool": "golangci-lint"
 }

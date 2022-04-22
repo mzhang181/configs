@@ -1,41 +1,37 @@
 // Place your key bindings in this file to override the defaultsauto[]
 [
     {
-        "key": "ctrl+b n",
-        "command": "workbench.action.nextEditor"
+        "key": "ctrl+w j",
+        "command": "workbench.action.navigateDown"
     },
     {
-        "key": "ctrl+pagedown",
-        "command": "-workbench.action.nextEditor"
+        "key": "ctrl+w h",
+        "command": "workbench.action.navigateLeft"
     },
     {
-        "key": "ctrl+b p",
-        "command": "workbench.action.previousEditor"
+        "key": "ctrl+w l",
+        "command": "workbench.action.navigateRight"
     },
     {
-        "key": "ctrl+pageup",
-        "command": "-workbench.action.previousEditor"
+        "key": "ctrl+w k",
+        "command": "workbench.action.navigateUp"
     },
     {
-        "key": "ctrl+\\",
+        "key": "ctrl+w",
+        "command": "-workbench.action.closeActiveEditor"
+    },
+    {
+        "key": "ctrl+w \\",
         "command": "workbench.action.terminal.split",
-        "when": "terminalFocus && terminalProcessSupported"
+        "when": "terminalFocus && terminalProcessSupported || terminalFocus && terminalWebExtensionContributedProfile"
     },
     {
         "key": "ctrl+shift+5",
         "command": "-workbench.action.terminal.split",
-        "when": "terminalFocus && terminalProcessSupported"
+        "when": "terminalFocus && terminalProcessSupported || terminalFocus && terminalWebExtensionContributedProfile"
     },
     {
-        "key": "f7",
-        "command": "workbench.action.toggleSidebarVisibility"
-    },
-    {
-        "key": "ctrl+b",
-        "command": "-workbench.action.toggleSidebarVisibility"
-    },
-    {
-        "key": "ctrl+w v",
+        "key": "ctrl+w \\",
         "command": "workbench.action.splitEditor"
     },
     {
@@ -43,71 +39,27 @@
         "command": "-workbench.action.splitEditor"
     },
     {
-        "key": "ctrl+w s",
-        "command": "workbench.action.splitEditorOrthogonal"
+        "key": "ctrl+b p",
+        "command": "workbench.action.previousEditorInGroup"
     },
     {
-        "key": "ctrl+k ctrl+\\",
-        "command": "-workbench.action.splitEditorOrthogonal"
+        "key": "ctrl+k ctrl+pageup",
+        "command": "-workbench.action.previousEditorInGroup"
     },
     {
-        "key": "ctrl+j",
-        "command": "workbench.action.navigateDown"
+        "key": "ctrl+b n",
+        "command": "workbench.action.nextEditorInGroup"
     },
     {
-        "key": "ctrl+k",
-        "command": "workbench.action.navigateUp"
+        "key": "ctrl+k ctrl+pagedown",
+        "command": "-workbench.action.nextEditorInGroup"
     },
     {
-        "key": "ctrl+h",
-        "command": "workbench.action.navigateLeft"
+        "key": "ctrl+g shift+m",
+        "command": "workbench.action.minimizeOtherEditors"
     },
     {
-        "key": "ctrl+b c",
-        "command": "workbench.action.closeActiveEditor"
-    },
-    {
-        "key": "ctrl+w",
-        "command": "-workbench.action.closeActiveEditor"
-    },
-    {
-        "key": "ctrl+l",
-        "command": "workbench.action.navigateRight"
-    },
-    {
-        "key": "ctrl+w up",
-        "command": "workbench.action.terminal.resizePaneUp"
-    },
-    {
-        "key": "ctrl+w down",
-        "command": "workbench.action.terminal.resizePaneDown"
-    },
-    {
-        "key": "ctrl+w left",
-        "command": "workbench.action.terminal.resizePaneLeft"
-    },
-    {
-        "key": "ctrl+w right",
-        "command": "workbench.action.terminal.resizePaneRight"
-    },
-    {
-        "key": "ctrl+b left",
-        "command": "workbench.action.moveEditorLeftInGroup"
-    },
-    {
-        "key": "ctrl+shift+pageup",
-        "command": "-workbench.action.moveEditorLeftInGroup"
-    },
-    {
-        "key": "ctrl+b right",
-        "command": "workbench.action.moveEditorRightInGroup"
-    },
-    {
-        "key": "ctrl+shift+pagedown",
-        "command": "-workbench.action.moveEditorRightInGroup"
-    },
-    {
-        "key": "ctrl+b j",
+        "key": "ctrl+g j",
         "command": "workbench.action.moveActiveEditorGroupDown"
     },
     {
@@ -115,7 +67,7 @@
         "command": "-workbench.action.moveActiveEditorGroupDown"
     },
     {
-        "key": "ctrl+b h",
+        "key": "ctrl+g h",
         "command": "workbench.action.moveActiveEditorGroupLeft"
     },
     {
@@ -123,7 +75,7 @@
         "command": "-workbench.action.moveActiveEditorGroupLeft"
     },
     {
-        "key": "ctrl+b l",
+        "key": "ctrl+g l",
         "command": "workbench.action.moveActiveEditorGroupRight"
     },
     {
@@ -131,7 +83,7 @@
         "command": "-workbench.action.moveActiveEditorGroupRight"
     },
     {
-        "key": "ctrl+b k",
+        "key": "ctrl+g k",
         "command": "workbench.action.moveActiveEditorGroupUp"
     },
     {
@@ -139,7 +91,19 @@
         "command": "-workbench.action.moveActiveEditorGroupUp"
     },
     {
-        "key": "f8",
-        "command": "workbench.action.toggleMaximizedPanel"
+        "key": "ctrl+w s",
+        "command": "workbench.action.focusSideBar"
+    },
+    {
+        "key": "ctrl+0",
+        "command": "-workbench.action.focusSideBar"
+    },
+    {
+        "key": "ctrl+g q",
+        "command": "workbench.action.closeEditorsInGroup"
+    },
+    {
+        "key": "ctrl+k w",
+        "command": "-workbench.action.closeEditorsInGroup"
     }
 ]
